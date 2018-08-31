@@ -1,0 +1,19 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: cloudfoundry/cflinuxfs2
+
+inputs:
+- name: php-pipeline-source
+- name: binary-builder
+- name: php-buildpack
+- name: oracle-drivers
+- name: php-buildpack
+
+outputs:
+- name: php-binaries-built
+
+run:
+  path: php-buildpack-pipeline/tasks/create-binaries.sh

@@ -1,0 +1,44 @@
+resources:
+- name: binary-builder-source
+  type: git
+  source:
+    uri: git@github.com:cloudfoundry/binary-builder.git
+    branch: master
+- name: php-buildpack-source
+  type: git
+  source:
+    uri: git@github.com:cloudfoundry/php-buildpack.git
+    branch: master
+- name: php-pipeline-source
+  type: git
+  source:
+    uri: git@github.com:bthelen/php-buildpack-pipeline.git
+    branch: master
+- name: oracle-drivers
+  type: s3
+  source:
+    bucket: pa-bthelen-php-buildpack
+    regexp: oracle-instantclient-12-with-sdk.tar.gz
+    access_key_id: ACCESS-KEY
+    secret_access_key: SECRET
+- name: php-buildpack-built
+  type: s3
+  source:
+    bucket: buildpacks
+    regexp: php_buildpack-cached-v(.*).zip
+    access_key_id: ACCESS-KEY
+    secret_access_key: SECRET
+
+jobs:
+- name: create-buildpack
+  plan:
+  - get: php-pipeline-source
+    trigger: true
+  - get: binary-builder
+    trigger: true
+  - get: php-buildpack
+    trigger: true
+  - get: oracle-drivers
+    trigger: false
+  - task: compile-binaries
+    file: php-pipeline-source/tasks/create-binaries.yml
