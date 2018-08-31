@@ -18,7 +18,7 @@ resources:
   type: s3
   source:
     bucket: pa-bthelen-php-buildpack
-    regexp: oracle-instantclient-12-with-sdk.tar.gz
+    regexp: oracle-instantclient-12-with-sdk-v(.*).tar.gz
     access_key_id: {{access-key-id}}
     secret_access_key: {{secret-access-key}}
 

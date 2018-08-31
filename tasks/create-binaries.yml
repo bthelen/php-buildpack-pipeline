@@ -7,10 +7,9 @@ image_resource:
 
 inputs:
 - name: php-pipeline-source
-- name: binary-builder
-- name: php-buildpack
+- name: binary-builder-source
+- name: php-buildpack-source
 - name: oracle-drivers
-- name: php-buildpack
 
 outputs:
 - name: php-binaries-built
