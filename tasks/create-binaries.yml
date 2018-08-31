@@ -15,4 +15,4 @@ outputs:
 - name: php-binaries-built
 
 run:
-  path: php-buildpack-pipeline/tasks/create-binaries.sh
+  path: php-pipeline-source/tasks/create-binaries.sh
