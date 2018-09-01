@@ -8,6 +8,7 @@ find .
 pushd oracle-drivers
 tar zxvf oracle*tar.gz
 ln -s . /oracle
+find /oracle
 popd
 
 #change to the binary builder directory and build php binaries
