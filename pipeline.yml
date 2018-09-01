@@ -33,5 +33,7 @@ jobs:
     trigger: true
   - get: oracle-drivers
     trigger: false
-  - task: compile-binaries
+  - task: create-binaries
     file: php-pipeline-source/tasks/create-binaries.yml
+  - task: create-buildpack
+    file: php-pipeline-source/tasks/create-buildpack.yml

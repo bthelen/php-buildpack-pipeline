@@ -6,12 +6,8 @@ image_resource:
     repository: cloudfoundry/cflinuxfs2
 
 inputs:
-- name: php-pipeline-source
-- name: binary-builder-source
-- name: oracle-drivers
-
-outputs:
 - name: php-binaries-built
+- name: php-buildpack-source
 
 run:
-  path: php-pipeline-source/tasks/create-binaries.sh
+  path: php-pipeline-source/tasks/create-buildpack.sh
