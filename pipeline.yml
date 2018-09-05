@@ -19,8 +19,8 @@ resources:
   source:
     bucket: pa-bthelen-php-buildpack
     regexp: oracle-instantclient-12-with-sdk-v(.*).tar.gz
-    access_key_id: {{access-key-id}}
-    secret_access_key: {{secret-access-key}}
+    access_key_id: ((access-key-id))
+    secret_access_key: ((secret-access-key))
 
 jobs:
 - name: create-buildpack
