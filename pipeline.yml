@@ -36,6 +36,7 @@ resources:
 
 jobs:
 - name: create-buildpack
+  serial: true
   plan:
   - get: php-pipeline-source
     trigger: true
