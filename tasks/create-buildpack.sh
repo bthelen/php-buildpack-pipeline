@@ -4,6 +4,10 @@ set -xe
 
 pwd
 
+pushd php-binaries-built
+ln -s `pwd` /php-binaries
+popd
+
 pushd php-buildpack-source
 #Will need to edit the manifest.yml
 gem install bundler

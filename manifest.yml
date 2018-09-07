@@ -1,0 +1,276 @@
+---
+language: php
+exclude_files:
+- ".git/"
+- ".gitignore"
+- fixtures/
+- pkg/
+- src/php/
+- ".bin/"
+- log/
+- tests/
+- cf.Gemfile
+- cf.Gemfile.lock
+- bin/package
+- buildpack-packager/
+- php_buildpack-*v*
+default_versions:
+- name: php
+  version: 7.2.8
+- name: httpd
+  version: 2.4.34
+- name: newrelic
+  version: 8.1.0.209
+- name: nginx
+  version: 1.14.0
+- name: composer
+  version: 1.7.2
+- name: CAAPM
+  version: 10.7.0
+url_to_dependency_map:
+- match: appdynamics-php-agent-linux_x64-(\d+\.\d+\.\d+\.\d+)
+  name: appdynamics
+  version: "$1"
+- match: newrelic-php5-(\d+\.\d+\.\d+\.\d+)-linux
+  name: newrelic
+  version: "$1"
+- match: CA-APM-PHPAgent-(\d+\.\d+\.\d+)_linux
+  name: CAAPM
+  version: "$1"
+- match: "([^\\/]*)-(\\d+\\.\\d+\\.\\d+)"
+  name: "$1"
+  version: "$2"
+- match: "\\/composer\\/(.*)\\/composer.phar"
+  name: composer
+  version: "$1"
+dependency_deprecation_dates:
+- match: 5.6.\d+
+  version_line: '5.6'
+  name: php
+  date: 2018-12-31
+  link: http://php.net/supported-versions.php
+- match: 7.0.\d+
+  version_line: '7.0'
+  name: php
+  date: 2018-12-03
+  link: http://php.net/supported-versions.php
+- match: 7.1.\d+
+  version_line: '7.1'
+  name: php
+  date: 2019-12-01
+  link: http://php.net/supported-versions.php
+- match: 7.2.\d+
+  version_line: '7.2'
+  name: php
+  date: 2020-11-30
+  link: http://php.net/supported-versions.php
+dependencies:
+- name: CAAPM
+  version: 10.7.0
+  uri: https://ca.bintray.com/apm-agents/CA-APM-PHPAgent-10.7.0_linux.tar.gz
+  sha256: d2bfb020dd91e6c474911da9c7fd94ba3c41a4794675c49ce97c809e2dfa20a4
+  cf_stacks:
+  - cflinuxfs2
+  - cflinuxfs3
+- name: appdynamics
+  version: 4.5.0.1686
+  uri: https://packages.appdynamics.com/php/4.5.0.1686/appdynamics-php-agent-linux_x64-4.5.0.1686.tar.bz2
+  sha256: f3268adc355da039209e9be7f30bf41614a828a5d10abed4c6673b9d1eb51046
+  cf_stacks:
+  - cflinuxfs2
+  - cflinuxfs3
+- name: composer
+  version: 1.7.2
+  uri: https://buildpacks.cloudfoundry.org/dependencies/composer/composer-1.7.2-ec3428d0.phar
+  sha256: ec3428d049ae8877f7d102c2ee050dbd51a160fc2dde323f3e126a3b3846750e
+  cf_stacks:
+  - cflinuxfs2
+  - cflinuxfs3
+- name: httpd
+  version: 2.4.34
+  uri: https://buildpacks.cloudfoundry.org/dependencies/httpd/httpd-2.4.34-linux-x64-cflinuxfs2-a84dc5b4.tgz
+  sha256: a84dc5b4de84b2cb81b008dcfbc06664bf0f5a7aef94fcb97c6979a755128a81
+  cf_stacks:
+  - cflinuxfs2
+- name: httpd
+  version: 2.4.34
+  uri: https://buildpacks.cloudfoundry.org/dependencies/httpd/httpd-2.4.34-linux-x64-cflinuxfs3-ef3641b7.tgz
+  sha256: ef3641b7384159913282f72ef60224e0d2541f6e3bc851caef46a2bf1f7d5327
+  cf_stacks:
+  - cflinuxfs3
+- name: newrelic
+  version: 8.1.0.209
+  uri: https://download.newrelic.com/php_agent/archive/8.1.0.209/newrelic-php5-8.1.0.209-linux.tar.gz
+  cf_stacks:
+  - cflinuxfs2
+  sha256: be1ad4e9ff3113305bc320e6dfd33e233da7ad1b8c8815ccfbfbe99af71cafa3
+- name: nginx
+  version: 1.14.0
+  uri: https://buildpacks.cloudfoundry.org/dependencies/nginx-static/nginx-1.14.0-linux-x64-cflinuxfs2-5142f2b2.tgz
+  sha256: 5142f2b2ccd5d8e8dbe8f445f45e0221f2d4e9a552dfa7e4d8005fe53a0769ee
+  cf_stacks:
+  - cflinuxfs2
+- name: nginx
+  version: 1.14.0
+  uri: https://buildpacks.cloudfoundry.org/dependencies/nginx-static/nginx-1.14.0-linux-x64-cflinuxfs3-23553dd2.tgz
+  sha256: 23553dd29d1d25dc65c7bceddaf78c3edcc3653567be5a5b5cecbc3027c65355
+  cf_stacks:
+  - cflinuxfs3
+- name: nginx
+  version: 1.15.2
+  uri: https://buildpacks.cloudfoundry.org/dependencies/nginx-static/nginx-1.15.2-linux-x64-cflinuxfs2-535a2646.tgz
+  sha256: 535a2646f44e8b944915c8390fb785d8a9ba4bd1fd8d50c6346d49577c3ffd23
+  cf_stacks:
+  - cflinuxfs2
+- name: nginx
+  version: 1.15.2
+  uri: https://buildpacks.cloudfoundry.org/dependencies/nginx-static/nginx-1.15.2-linux-x64-cflinuxfs3-d57d6220.tgz
+  sha256: d57d6220ace44789c781222eb699634963f0d4563b3f1a0e1344c1538c309ec3
+  cf_stacks:
+  - cflinuxfs3
+- name: php
+  version: 5.6.37
+  uri: file:///php-binaries/php-5.6.37-linux-x64.tgz
+  sha256: 4523b18592fd8a3ef248a46d7e8207d6061a2af4e366efe7e5bf72e051a7d953
+  cf_stacks:
+  - cflinuxfs2
+  modules:
+  - amqp
+  - apcu
+  - bz2
+  - cassandra
+  - curl
+  - dba
+  - exif
+  - fileinfo
+  - ftp
+  - gd
+  - gearman
+  - geoip
+  - gettext
+  - gmp
+  - igbinary
+  - imagick
+  - imap
+  - ioncube
+  - ldap
+  - lua
+  - lzf
+  - mailparse
+  - mbstring
+  - mcrypt
+  - memcache
+  - memcached
+  - mongo
+  - mongodb
+  - msgpack
+  - mssql
+  - mysql
+  - mysqli
+  - oauth
+  - opcache
+  - openssl
+  - pcntl
+  - pdo
+  - pdo_dblib
+  - pdo_mysql
+  - pdo_odbc
+  - pdo_pgsql
+  - pdo_sqlite
+  - pgsql
+  - phalcon
+  - phpiredis
+  - protobuf
+  - protocolbuffers
+  - pspell
+  - rdkafka
+  - readline
+  - redis
+  - shmop
+  - snmp
+  - soap
+  - sockets
+  - solr
+  - stomp
+  - suhosin
+  - sundown
+  - sysvmsg
+  - sysvsem
+  - sysvshm
+  - twig
+  - xcache
+  - xdebug
+  - xhprof
+  - xsl
+  - yaf
+  - yaml
+  - zip
+  - zlib
+- name: php
+  version: 7.1.21
+  uri: file:///php-binaries/php7-7.1.21-linux-x64.tgz
+  sha256: 80dcb35977647302fa8895d1093caaaef4cdc91d56a7bd4eaea897cf7ad79b0d
+  cf_stacks:
+  - cflinuxfs2
+  modules:
+  - amqp
+  - apcu
+  - bz2
+  - cassandra
+  - curl
+  - dba
+  - exif
+  - fileinfo
+  - ftp
+  - gd
+  - geoip
+  - gettext
+  - gmp
+  - igbinary
+  - imagick
+  - imap
+  - ioncube
+  - ldap
+  - lua
+  - lzf
+  - mailparse
+  - mbstring
+  - mcrypt
+  - memcached
+  - mongodb
+  - msgpack
+  - mysqli
+  - oauth
+  - opcache
+  - openssl
+  - pcntl
+  - pdo
+  - pdo_mysql
+  - pdo_odbc
+  - pdo_pgsql
+  - pdo_sqlite
+  - pgsql
+  - phalcon
+  - phpiredis
+  - protobuf
+  - pspell
+  - rdkafka
+  - readline
+  - redis
+  - shmop
+  - snmp
+  - soap
+  - sockets
+  - solr
+  - stomp
+  - sysvmsg
+  - sysvsem
+  - sysvshm
+  - tideways
+  - tideways_xhprof
+  - xdebug
+  - xsl
+  - yaf
+  - yaml
+  - zip
+  - zlib

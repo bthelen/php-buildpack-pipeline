@@ -32,3 +32,6 @@ popd
 pushd binary-builder-source
 cp *.tgz ../php-binaries-built/
 popd
+
+pushd php-binaries-built
+sha256sum *
