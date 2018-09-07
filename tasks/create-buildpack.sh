@@ -10,6 +10,7 @@ popd
 
 pushd php-buildpack-source
 #Will need to edit the manifest.yml
+cp ../php-pipeline-source/manifest.yml .
 gem install bundler
 BUNDLE_GEMFILE=cf.Gemfile bundle
 BUNDLE_GEMFILE=cf.Gemfile bundle exec buildpack-packager --uncached --stack=cflinuxfs2
