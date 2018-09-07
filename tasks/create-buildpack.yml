@@ -10,5 +10,8 @@ inputs:
 - name: php-binaries-built
 - name: php-buildpack-source
 
+outputs:
+- name: php-buildpack-built
+
 run:
   path: php-pipeline-source/tasks/create-buildpack.sh

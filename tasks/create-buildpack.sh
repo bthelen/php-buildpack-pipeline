@@ -9,3 +9,5 @@ pushd php-buildpack-source
 gem install bundler
 BUNDLE_GEMFILE=cf.Gemfile bundle
 BUNDLE_GEMFILE=cf.Gemfile bundle exec buildpack-packager --uncached --stack=cflinuxfs2
+
+cp php_buildpack-cflinuxfs2-v4.3.60.zip ../php-buildpack-built/php_buildpack-cflinuxfs2-v4.3.60-$(date +%Y%m%d%H%M%S).zip

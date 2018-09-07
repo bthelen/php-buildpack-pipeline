@@ -21,6 +21,13 @@ resources:
     regexp: oracle-instantclient-12-with-sdk-v(.*).tar.gz
     access_key_id: ((access-key-id))
     secret_access_key: ((secret-access-key))
+- name: php-oracle-buildpack
+  type: s3
+  source:
+    bucket: pa-bthelen-php-buildpack
+    regexp: php_buildpack-cflinuxfs2-v4.3.60-(.*).zip
+    access_key_id: ((access-key-id))
+    secret_access_key: ((secret-access-key))
 
 jobs:
 - name: create-buildpack
@@ -37,3 +44,6 @@ jobs:
     file: php-pipeline-source/tasks/create-binaries.yml
   - task: create-buildpack
     file: php-pipeline-source/tasks/create-buildpack.yml
+  - put: build-artifacts
+    params:
+      file: php-buildpack-built/php_buildpack-cflinuxfs2-v4.3.60-*.zip
