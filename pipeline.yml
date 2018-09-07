@@ -1,3 +1,8 @@
+groups:
+- name: PHP
+  jobs:
+  - create-buildpack
+
 resources:
 - name: binary-builder-source
   type: git
