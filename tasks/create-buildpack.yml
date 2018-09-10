@@ -5,6 +5,9 @@ image_resource:
   source:
     repository: cloudfoundry/cflinuxfs2
 
+params:
+  PHP_BUILDPACK_VERSION: 4.3.60
+
 inputs:
 - name: php-pipeline-source
 - name: php-binaries-built
