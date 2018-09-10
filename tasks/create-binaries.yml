@@ -4,6 +4,8 @@ image_resource:
   type: docker-image
   source:
     repository: cloudfoundry/cflinuxfs2
+  params:
+  - php5version: ((php-5-version))
 
 inputs:
 - name: php-pipeline-source
