@@ -13,7 +13,7 @@ PHP_5_BINARY_SHA256=$(sha256sum $PHP_5_BINARY_LOCATION | awk '{print $1}')
 cp ../php-pipeline-source/manifest.yml .
 #PHP5 Section
 sed s/--php-5-version--/$PHP_5_VERSION/g manifest.yml > manifest.yml
-sed s/--php-5-binary-location--/PHP_5_BINARY_SHA256/g manifest.yml > manifest.yml
+sed s/--php-5-binary-location--/$PHP_5_BINARY_SHA256/g manifest.yml > manifest.yml
 sed s/--php-5-binary-sha--/$PHP_5_BINARY_SHA256/g manifest.yml > manifest.yml
 cat manifest.yml
 #PHP7 Section
