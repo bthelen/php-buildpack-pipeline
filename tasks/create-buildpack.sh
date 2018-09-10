@@ -10,16 +10,21 @@ pushd php-buildpack-source
 #Get our custom version of manifest.yml
 cp ../php-pipeline-source/manifest.yml .
 #PHP5 Section
+cat manifest.yml
 PHP_5_BINARY_LOCATION='\/php-binaries\/php-$PHP_5_VERSION-linux-x64.tgz'
 PHP_5_BINARY_SHA256=$(sha256sum $PHP_5_BINARY_LOCATION | awk '{print $1}')
 sed -i s/'##php-5-version##'/$PHP_5_VERSION/g manifest.yml
+cat manifest.yml
 sed -i s/'##php-5-binary-location##'/$PHP_5_BINARY_LOCATION/g manifest.yml
 sed -i s/'##php-5-binary-sha##'/$PHP_5_BINARY_SHA256/g manifest.yml
+cat manifest.yml
 #PHP7 Section
 PHP_7_BINARY_LOCATION='\/php-binaries\/php-$PHP_7_VERSION-linux-x64.tgz'
 PHP_7_BINARY_SHA256=$(sha256sum $PHP_7_BINARY_LOCATION | awk '{print $1}')
 sed -i s/'##php-7-version##'/$PHP_7_VERSION/g manifest.yml
+cat manifest.yml
 sed -i s/'##php-7-binary-location##'/$PHP_7_BINARY_LOCATION/g manifest.yml
+cat manifest.yml
 sed -i s/'##php-7-binary-sha##'/$PHP_7_BINARY_SHA256/g manifest.yml
 cat manifest.yml
 gem install bundler
