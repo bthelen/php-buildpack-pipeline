@@ -129,9 +129,9 @@ dependencies:
   cf_stacks:
   - cflinuxfs3
 - name: php
-  version: --php-5-version--
-  uri: file://--php-5-binary-location--
-  sha256: --php-5-binary-sha--
+  version: ##php-5-version##
+  uri: file://##php-5-binary-location##
+  sha256: ##php-5-binary-sha##
   cf_stacks:
   - cflinuxfs2
   modules:
