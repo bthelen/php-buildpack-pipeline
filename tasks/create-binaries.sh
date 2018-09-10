@@ -27,10 +27,10 @@ popd
 pushd /binary-builder
 #Build a 5.6
 wget https://raw.githubusercontent.com/cloudfoundry/public-buildpacks-ci-robots/master/binary-builds/php-extensions.yml
-./bin/binary-builder --name=php --version=5.6.37 --md5=ae625e0cfcfdacea3e7a70a075e47155 --php-extensions-file=./php-extensions.yml
+./bin/binary-builder --name=php --version=$PHP_5_VERSION --md5=ae625e0cfcfdacea3e7a70a075e47155 --php-extensions-file=./php-extensions.yml
 #Build a 7.1
 wget https://raw.githubusercontent.com/cloudfoundry/public-buildpacks-ci-robots/master/binary-builds/php7-extensions.yml
-./bin/binary-builder --name=php7 --version=7.1.21 --md5=32ea3ce54d7d5ed03c6c600dffd65813  --php-extensions-file=./php7-extensions.yml
+./bin/binary-builder --name=php7 --version=$PHP_7_VERSION --md5=32ea3ce54d7d5ed03c6c600dffd65813 --php-extensions-file=./php7-extensions.yml
 popd
 
 pushd binary-builder-source
