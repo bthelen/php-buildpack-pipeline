@@ -16,7 +16,7 @@ exclude_files:
 - php_buildpack-*v*
 default_versions:
 - name: php
-  version: 7.1.21
+  version: ##php-7-version##
 - name: httpd
   version: 2.4.34
 - name: newrelic
@@ -207,9 +207,9 @@ dependencies:
   - zip
   - zlib
 - name: php
-  version: 7.1.21
-  uri: file:///php-binaries/php7-7.1.21-linux-x64.tgz
-  sha256: 67478e03a16283586b3ec487736156902767404795b6b2ac8f2bf8112299e6ea
+  version: ##php-7-version##
+  uri: file://##php-7-binary-location##
+  sha256: ##php-7-binary-sha##
   cf_stacks:
   - cflinuxfs2
   modules:
