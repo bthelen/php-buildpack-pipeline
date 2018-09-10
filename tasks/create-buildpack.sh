@@ -7,7 +7,7 @@ ln -s `pwd` /php-binaries
 popd
 
 pushd php-buildpack-source
-PHP_5_BINARY_LOCATION=/php-binaries/php-$PHP_5_VERSION-linux-x64.tgz
+PHP_5_BINARY_LOCATION=\/php-binaries\/php-$PHP_5_VERSION-linux-x64.tgz
 PHP_5_BINARY_SHA256=$(sha256sum $PHP_5_BINARY_LOCATION | awk '{print $1}')
 #Get our custom version of manifest.yml
 cp ../php-pipeline-source/manifest.yml .
