@@ -12,9 +12,9 @@ PHP_5_BINARY_LOCATION=/php-binaries/php-$PHP_5_VERSION-linux-x64.tgz
 PHP_5_BINARY_SHA256=$(sha256sum $PHP_5_BINARY_LOCATION | awk '{print $1}')
 cp ../php-pipeline-source/manifest.yml .
 #PHP5 Section
-sed -i s/--php-5-version--/$PHP_5_VERSION/g manifest.yml
-sed -i  s/--php-5-binary-location--/$PHP_5_BINARY_SHA256/g manifest.yml
-sed -i  s/--php-5-binary-sha--/$PHP_5_BINARY_SHA256/g manifest.yml
+sed -i s/'--php-5-version--'/$PHP_5_VERSION/g manifest.yml
+sed -i s/'--php-5-binary-location--'/$PHP_5_BINARY_LOCATION/g manifest.yml
+sed -i s/'--php-5-binary-sha--'/$PHP_5_BINARY_SHA256/g manifest.yml
 cat manifest.yml
 #PHP7 Section
 gem install bundler
