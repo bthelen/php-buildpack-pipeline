@@ -50,6 +50,8 @@ jobs:
     file: php-pipeline-source/tasks/create-binaries.yml
   - task: create-buildpack
     file: php-pipeline-source/tasks/create-buildpack.yml
+    params:
+      - php5version: ((php-5-version))
   - put: php-oracle-buildpack
     params:
       file: php-buildpack-built/php_buildpack-cflinuxfs2-v4.3.60-*.zip
