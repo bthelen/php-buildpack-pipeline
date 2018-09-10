@@ -2,14 +2,6 @@
 
 set -xe
 
-set
-
-env
-
-pwd
-
-# find .
-
 # extract oracle drivers and sym link
 pushd oracle-drivers
 pwd
