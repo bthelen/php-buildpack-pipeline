@@ -6,7 +6,6 @@ image_resource:
     repository: cloudfoundry/cflinuxfs2
 
 params:
-  PHP_BUILDPACK_VERSION:
   PHP_5_VERSION:
   PHP_7_VERSION:
 

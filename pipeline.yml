@@ -54,7 +54,6 @@ jobs:
   - task: create-buildpack
     file: php-pipeline-source/tasks/create-buildpack.yml
     params:
-      PHP_BUILDPACK_VERSION: 4.3.61
       PHP_5_VERSION: 5.6.37
       PHP_7_VERSION: 7.1.21
   - put: php-oracle-buildpack
