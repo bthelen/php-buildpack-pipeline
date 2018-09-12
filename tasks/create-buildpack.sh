@@ -27,6 +27,10 @@ cat manifest.yml
 gem install bundler
 BUNDLE_GEMFILE=cf.Gemfile bundle
 BUNDLE_GEMFILE=cf.Gemfile bundle exec buildpack-packager --cached --stack=cflinuxfs2
-
 cp php_buildpack*.zip ../php-buildpack-built/
+popd
+
+pushd php-buildpack-built
 rename "s/.zip$/-$(date +%Y%m%d%H%M%S).zip/" *.zip
+ls
+popd
