@@ -30,7 +30,7 @@ resources:
   type: s3
   source:
     bucket: pa-bthelen-php-buildpack
-    regexp: php_buildpack-cached-cflinuxfs2-v4.3.60-(.*).zip
+    regexp: php_buildpack-cached-cflinuxfs2-v4.3.61-(.*).zip
     access_key_id: ((access-key-id))
     secret_access_key: ((secret-access-key))
 
@@ -59,4 +59,4 @@ jobs:
       PHP_7_VERSION: 7.1.21
   - put: php-oracle-buildpack
     params:
-      file: php-buildpack-built/php_buildpack-cached-cflinuxfs2-v4.3.60-*.zip
+      file: php-buildpack-built/php_buildpack-cached-cflinuxfs2-v4.3.61-*.zip
