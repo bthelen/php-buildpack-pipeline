@@ -6,8 +6,8 @@ image_resource:
     repository: cloudfoundry/cflinuxfs2
 
 params:
-  PHP_5_VERSION: 5.6.37
-  PHP_7_VERSION: 7.1.21
+  PHP_5_VERSION:
+  PHP_7_VERSION:
 
 inputs:
 - name: php-pipeline-source
