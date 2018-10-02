@@ -135,6 +135,7 @@ dependencies:
   cf_stacks:
   - cflinuxfs2
   modules:
+  - alias
   - amqp
   - apcu
   - bz2
@@ -213,6 +214,7 @@ dependencies:
   cf_stacks:
   - cflinuxfs2
   modules:
+  - alias
   - amqp
   - apcu
   - bz2
