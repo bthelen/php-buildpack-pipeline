@@ -8,7 +8,7 @@ popd
 
 pushd php-buildpack-source
 #Try to turn on the alias http module
-sed -i s/'#LoadModule alias_module modules/mod_alias.so'/'LoadModule alias_module modules/mod_alias.so'/g defaults/config/httpd/extra/httpd-modules.conf
+sed -i s/'#LoadModule alias_module modules\/mod_alias.so'/'LoadModule alias_module modules\/mod_alias.so'/g defaults/config/httpd/extra/httpd-modules.conf
 #Get our custom version of manifest.yml
 cp ../php-pipeline-source/manifest.yml .
 #PHP5 Section
