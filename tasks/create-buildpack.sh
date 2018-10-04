@@ -9,6 +9,13 @@ popd
 pushd php-buildpack-source
 #Try to turn on the alias http module
 sed -i s/'#LoadModule alias_module modules\/mod_alias.so'/'LoadModule alias_module modules\/mod_alias.so'/g defaults/config/httpd/extra/httpd-modules.conf
+#Add Configuration to httpd.conf to set the directory
+echo '
+<Directory "${HOME}/app">
+    Options SymLinksIfOwnerMatch
+    AllowOverride All
+    Require all granted
+</Directory>' >> defaults/config/httpd/httpd.conf
 #Get our custom version of manifest.yml
 cp ../php-pipeline-source/manifest.yml .
 #PHP5 Section
