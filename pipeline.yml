@@ -22,14 +22,16 @@ resources:
 - name: oracle-drivers
   type: s3
   source:
-    bucket: pa-bthelen-php-buildpack
+    endpoint: ((endpoint))
+    bucket: ((s3-bucket-name))
     regexp: oracle-instantclient-12-with-sdk-v(.*).tar.gz
     access_key_id: ((access-key-id))
     secret_access_key: ((secret-access-key))
 - name: php-oracle-buildpack
   type: s3
   source:
-    bucket: pa-bthelen-php-buildpack
+    endpoint: ((endpoint))
+    bucket: ((s3-bucket-name))
     regexp: php_buildpack-cached-cflinuxfs2-v(.*).zip
     access_key_id: ((access-key-id))
     secret_access_key: ((secret-access-key))
