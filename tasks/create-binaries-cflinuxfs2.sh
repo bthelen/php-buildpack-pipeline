@@ -2,9 +2,6 @@
 
 set -xe
 
-# debug block -- does bundler already exist
-ls -al /usr/bin/bundle
-
 # extract oracle drivers and sym link
 pushd oracle-drivers
 pwd
