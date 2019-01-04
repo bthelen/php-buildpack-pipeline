@@ -18,4 +18,4 @@ outputs:
 - name: php-buildpack-built
 
 run:
-  path: php-pipeline-source/tasks/create-buildpack.sh
+  path: php-pipeline-source/tasks/create-buildpack-cflinuxfs2.sh
