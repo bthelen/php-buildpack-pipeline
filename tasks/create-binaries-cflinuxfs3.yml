@@ -1,0 +1,21 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: cloudfoundry/cflinuxfs3
+
+params:
+  PHP_5_VERSION:
+  PHP_7_VERSION:
+
+inputs:
+- name: php-pipeline-source
+- name: binary-builder-source
+- name: oracle-drivers
+
+outputs:
+- name: php-binaries-built
+
+run:
+  path: php-pipeline-source/tasks/create-binaries-cflinuxfs3.sh
