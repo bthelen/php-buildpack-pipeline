@@ -1,8 +1,8 @@
 groups:
 - name: PHP
   jobs:
+  - create-php-binaries
   - create-buildpack-cflinuxfs2
-  - create-buildpack-cflinuxfs3
 
 resources:
 - name: binary-builder-source
@@ -19,13 +19,21 @@ resources:
   type: git
   source:
     uri: https://github.com/bthelen/php-buildpack-pipeline.git
-    branch: master
+    branch: split-into-mulitple-steps
 - name: oracle-drivers
   type: s3
   source:
     endpoint: ((endpoint))
     bucket: ((s3-bucket-name))
     regexp: oracle-instantclient-12-with-sdk-v(.*).tar.gz
+    access_key_id: ((access-key-id))
+    secret_access_key: ((secret-access-key))
+- name: php-binaries
+  type: s3
+  source:
+    endpoint: ((endpoint))
+    bucket: ((s3-bucket-name))
+    regexp: php_binaries-v(.*).zip
     access_key_id: ((access-key-id))
     secret_access_key: ((secret-access-key))
 - name: php-oracle-buildpack-cflinuxfs2
@@ -46,17 +54,32 @@ resources:
     secret_access_key: ((secret-access-key))
 
 jobs:
+- name: create-php-binaries
+  serial: true
+  plan:
+    - get: php-pipeline-source
+      trigger: true
+    - get: binary-builder-source
+      trigger: true
+    - get: oracle-drivers
+      trigger: false
+    - task: create-binaries-cflinuxfs2
+      file: php-pipeline-source/tasks/create-binaries.yml
+      params:
+        PHP_5_VERSION: 5.6.37
+        PHP_7_VERSION: 7.1.21
+    - put: php-binaries
+      params:
+        file: binary-builder-source/php_binaries-v*.zip
 - name: create-buildpack-cflinuxfs2
   serial: true
   plan:
   - get: php-pipeline-source
     trigger: true
-  - get: binary-builder-source
-    trigger: true
   - get: php-buildpack-source
     trigger: true
-  - get: oracle-drivers
-    trigger: false
+  - get: php-binaries
+    trigger: true
   - task: create-binaries-cflinuxfs2
     file: php-pipeline-source/tasks/create-binaries-cflinuxfs2.yml
     params:
@@ -70,27 +93,3 @@ jobs:
   - put: php-oracle-buildpack-cflinuxfs2
     params:
       file: php-buildpack-built/php_buildpack-cached-cflinuxfs2-v*.zip
-- name: create-buildpack-cflinuxfs3
-  serial: true
-  plan:
-    - get: php-pipeline-source
-      trigger: true
-    - get: binary-builder-source
-      trigger: true
-    - get: php-buildpack-source
-      trigger: true
-    - get: oracle-drivers
-      trigger: false
-    - task: create-binaries-cflinuxfs3
-      file: php-pipeline-source/tasks/create-binaries-cflinuxfs3.yml
-      params:
-        PHP_5_VERSION: 5.6.37
-        PHP_7_VERSION: 7.1.21
-    - task: create-buildpack-cflinuxfs3
-      file: php-pipeline-source/tasks/create-buildpack-cflinuxfs3.yml
-      params:
-        PHP_5_VERSION: 5.6.37
-        PHP_7_VERSION: 7.1.21
-    - put: php-oracle-buildpack-cflinuxfs3
-      params:
-        file: php-buildpack-built/php_buildpack-cached-cflinuxfs3-v*.zip

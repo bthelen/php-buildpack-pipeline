@@ -2,7 +2,7 @@
 
 set -xe
 
-pushd php-binaries-built
+pushd php-binaries
 ln -s `pwd` /php-binaries
 popd
 
