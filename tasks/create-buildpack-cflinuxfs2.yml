@@ -12,7 +12,7 @@ params:
 inputs:
 - name: php-pipeline-source
 - name: php-buildpack-source
-- nane: php-binaries
+- name: php-binaries
 
 outputs:
 - name: php-buildpack-built
