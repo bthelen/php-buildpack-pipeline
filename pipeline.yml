@@ -20,7 +20,7 @@ resources:
   type: git
   source:
     uri: https://github.com/bthelen/php-buildpack-pipeline.git
-    branch: split-into-mulitple-steps
+    branch: master
 - name: oracle-drivers
   type: s3
   source:
