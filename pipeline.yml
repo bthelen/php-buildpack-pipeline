@@ -69,11 +69,11 @@ jobs:
   - get: php-pipeline-source
     trigger: true
     passed: [create-php-binaries]
-  - get: php-buildpack-source
-    trigger: true
   - get: php-binaries
     trigger: true
     passed: [create-php-binaries]
+  - get: php-buildpack-source
+    trigger: true
   - task: create-buildpack-cflinuxfs2
     file: php-pipeline-source/tasks/create-buildpack-cflinuxfs2.yml
     params:
