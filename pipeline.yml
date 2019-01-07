@@ -55,7 +55,7 @@ jobs:
       trigger: true
     - get: oracle-drivers
       trigger: false
-    - task: create-binaries-cflinuxfs2
+    - task: create-binaries
       file: php-pipeline-source/tasks/create-binaries.yml
       params:
         PHP_5_VERSION: 5.6.37
@@ -73,11 +73,6 @@ jobs:
     trigger: true
   - get: php-binaries
     trigger: true
-  - task: create-binaries-cflinuxfs2
-    file: php-pipeline-source/tasks/create-binaries-cflinuxfs2.yml
-    params:
-      PHP_5_VERSION: 5.6.37
-      PHP_7_VERSION: 7.1.21
   - task: create-buildpack-cflinuxfs2
     file: php-pipeline-source/tasks/create-buildpack-cflinuxfs2.yml
     params:

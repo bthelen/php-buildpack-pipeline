@@ -15,4 +15,4 @@ inputs:
 - name: oracle-drivers
 
 run:
-  path: php-pipeline-source/tasks/create-binaries-cflinuxfs2.sh
+  path: php-pipeline-source/tasks/create-binaries.sh
