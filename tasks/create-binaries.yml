@@ -14,5 +14,8 @@ inputs:
 - name: binary-builder-source
 - name: oracle-drivers
 
+outputs:
+  - name: php-binaries-built
+
 run:
   path: php-pipeline-source/tasks/create-binaries.sh

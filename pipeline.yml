@@ -62,7 +62,7 @@ jobs:
         PHP_7_VERSION: 7.1.21
     - put: php-binaries
       params:
-        file: binary-builder-source/php_binaries-v*.zip
+        file: php-binaries-built/php_binaries-v*.zip
 - name: create-buildpack-cflinuxfs2
   serial: true
   plan:
