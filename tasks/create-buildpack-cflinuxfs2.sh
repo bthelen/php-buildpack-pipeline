@@ -3,6 +3,7 @@
 set -xe
 
 pushd php-binaries
+unzip php_binaries-v*.zip
 ln -s `pwd` /php-binaries
 popd
 
