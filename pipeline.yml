@@ -68,6 +68,7 @@ jobs:
   plan:
   - get: php-pipeline-source
     trigger: true
+    passed: [create-php-binaries]
   - get: php-buildpack-source
     trigger: true
   - get: php-binaries
