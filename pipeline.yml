@@ -2,6 +2,7 @@ groups:
 - name: PHP
   jobs:
   - create-buildpack-cflinuxfs2
+  - create-buildpack-cflinuxfs3
 
 resources:
 - name: binary-builder-source
@@ -61,6 +62,9 @@ jobs:
   - put: php-oracle-buildpack-cflinuxfs2
     params:
       file: php-buildpack-built/php_buildpack-cached-cflinuxfs2-v*.zip
+  - put: php-oracle-buildpack-cflinuxfs3
+    params:
+      file: php-buildpack-built/php_buildpack-cached-cflinuxfs3-v*.zip
 - name: create-buildpack-cflinuxfs3
   serial: true
   plan:
