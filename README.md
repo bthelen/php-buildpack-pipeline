@@ -170,5 +170,5 @@ This Pipeline will output one resource:
 
 ## Caveats/Limitations
 
-* Currently this pipeline only builds Buildpacks for `cflinuxfs2`.  
 * Currently this pipeline only builds two versions of PHP binaries -- `5.6.37` and `7.1.21`.
+* You can modify these versions by editing the `PHP_5_VERSION` and `PHP_7_VERSION` variables in `pipeline.yml` 
