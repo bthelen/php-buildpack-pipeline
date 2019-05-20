@@ -51,6 +51,8 @@ which bundle
 
 find / -name bundle
 
+echo $PATH
+
 BUNDLE_GEMFILE=cf.Gemfile bundle
 BUNDLE_GEMFILE=cf.Gemfile bundle exec buildpack-packager --cached --stack=cflinuxfs3
 cp php_buildpack*.zip ../php-buildpack-built/
