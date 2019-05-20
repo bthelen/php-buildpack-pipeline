@@ -30,7 +30,7 @@ wget https://raw.githubusercontent.com/cloudfoundry/buildpacks-ci/develop/tasks/
 ./bin/binary-builder --name=php7 --version=$PHP_7_2_VERSION --md5=32ea3ce54d7d5ed03c6c600dffd65813 --php-extensions-file=./php72-extensions.yml
 
 #Build a 7.3
-wget https://raw.githubusercontent.com/cloudfoundry/buildpacks-ci/develop/tasks/build-binary-new/php73-extensions.yml
+# wget https://raw.githubusercontent.com/cloudfoundry/buildpacks-ci/develop/tasks/build-binary-new/php72-extensions.yml
 ./bin/binary-builder --name=php7 --version=$PHP_7_3_VERSION --md5=32ea3ce54d7d5ed03c6c600dffd65813 --php-extensions-file=./php72-extensions.yml
 
 popd
