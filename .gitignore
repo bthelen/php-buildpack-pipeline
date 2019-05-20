@@ -23,6 +23,6 @@
 hs_err_pid*
 
 # local secrets
-credentials.yml
+credentials*.yml
 
 .idea
