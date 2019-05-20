@@ -23,17 +23,17 @@ pushd /binary-builder
 
 #Build a 7.1
 wget https://raw.githubusercontent.com/cloudfoundry/buildpacks-ci/develop/tasks/build-binary-new/php71-extensions.yml
-./bin/binary-builder --name=php71 --version=$PHP_7_1_VERSION --md5=32ea3ce54d7d5ed03c6c600dffd65813 --php-extensions-file=./php71-extensions.yml
+./bin/binary-builder --name=php7 --version=$PHP_7_1_VERSION --md5=32ea3ce54d7d5ed03c6c600dffd65813 --php-extensions-file=./php71-extensions.yml
 popd
 
 #Build a 7.2
 wget https://raw.githubusercontent.com/cloudfoundry/buildpacks-ci/develop/tasks/build-binary-new/php72-extensions.yml
-./bin/binary-builder --name=php72 --version=$PHP_7_2_VERSION --md5=32ea3ce54d7d5ed03c6c600dffd65813 --php-extensions-file=./php72-extensions.yml
+./bin/binary-builder --name=php7 --version=$PHP_7_2_VERSION --md5=32ea3ce54d7d5ed03c6c600dffd65813 --php-extensions-file=./php72-extensions.yml
 popd
 
 #Build a 7.3
 wget https://raw.githubusercontent.com/cloudfoundry/buildpacks-ci/develop/tasks/build-binary-new/php73-extensions.yml
-./bin/binary-builder --name=php73 --version=$PHP_7_3_VERSION --md5=32ea3ce54d7d5ed03c6c600dffd65813 --php-extensions-file=./php73-extensions.yml
+./bin/binary-builder --name=php7 --version=$PHP_7_3_VERSION --md5=32ea3ce54d7d5ed03c6c600dffd65813 --php-extensions-file=./php73-extensions.yml
 popd
 
 pushd binary-builder-source
