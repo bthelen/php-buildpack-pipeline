@@ -2,7 +2,6 @@ groups:
 - name: PHP
   jobs:
   - create-php-binaries
-  - create-buildpack-cflinuxfs2
   - create-buildpack-cflinuxfs3
 
 resources:
@@ -37,14 +36,6 @@ resources:
     regexp: php_binaries-v(.*).zip
     access_key_id: ((access-key-id))
     secret_access_key: ((secret-access-key))
-- name: php-oracle-buildpack-cflinuxfs2
-  type: s3
-  source:
-    endpoint: ((endpoint))
-    bucket: ((s3-bucket-name))
-    regexp: php_buildpack-cached-cflinuxfs2-v(.*).zip
-    access_key_id: ((access-key-id))
-    secret_access_key: ((secret-access-key))
 - name: php-oracle-buildpack-cflinuxfs3
   type: s3
   source:
@@ -68,29 +59,12 @@ jobs:
       file: php-pipeline-source/tasks/create-binaries.yml
       params:
         PHP_5_VERSION: 5.6.40
-        PHP_7_VERSION: 7.1.26
+        PHP_7_1_VERSION: 7.1.29
+        PHP_7_2_VERSION: 7.2.18
+        PHP_7_3_VERSION: 7.3.5
     - put: php-binaries
       params:
         file: php-binaries-built/php_binaries-v*.zip
-- name: create-buildpack-cflinuxfs2
-  serial: true
-  plan:
-  - get: php-pipeline-source
-    trigger: true
-    passed: [create-php-binaries]
-  - get: php-binaries
-    trigger: true
-    passed: [create-php-binaries]
-  - get: php-buildpack-source
-    trigger: true
-  - task: create-buildpack-cflinuxfs2
-    file: php-pipeline-source/tasks/create-buildpack-cflinuxfs2.yml
-    params:
-      PHP_5_VERSION: 5.6.40
-      PHP_7_VERSION: 7.1.26
-  - put: php-oracle-buildpack-cflinuxfs2
-    params:
-      file: php-buildpack-built/php_buildpack-cached-cflinuxfs2-v*.zip
 - name: create-buildpack-cflinuxfs3
   serial: true
   plan:
@@ -106,7 +80,9 @@ jobs:
       file: php-pipeline-source/tasks/create-buildpack-cflinuxfs3.yml
       params:
         PHP_5_VERSION: 5.6.40
-        PHP_7_VERSION: 7.1.26
+        PHP_7_1_VERSION: 7.1.29
+        PHP_7_2_VERSION: 7.2.18
+        PHP_7_3_VERSION: 7.3.5
     - put: php-oracle-buildpack-cflinuxfs3
       params:
         file: php-buildpack-built/php_buildpack-cached-cflinuxfs3-v*.zip
