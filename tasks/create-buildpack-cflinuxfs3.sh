@@ -44,10 +44,10 @@ sed -i s/'##php-7-3-binary-location##'/$PHP_7_3_BINARY_LOCATION_ESCAPED/g manife
 sed -i s/'##php-7-3-binary-sha##'/$PHP_7_3_BINARY_SHA256/g manifest.yml
 
 cat manifest.yml
-gem install bundler
+gem install bundler -v '1.17.3'
 
-BUNDLE_GEMFILE=cf.Gemfile /usr/local/bin/bundle
-BUNDLE_GEMFILE=cf.Gemfile /usr/local/bin/bundle exec buildpack-packager --cached --stack=cflinuxfs3
+BUNDLE_GEMFILE=cf.Gemfile bundle
+BUNDLE_GEMFILE=cf.Gemfile bundle exec buildpack-packager --cached --stack=cflinuxfs3
 cp php_buildpack*.zip ../php-buildpack-built/
 popd
 
