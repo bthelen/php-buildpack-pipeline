@@ -46,13 +46,6 @@ sed -i s/'##php-7-3-binary-sha##'/$PHP_7_3_BINARY_SHA256/g manifest.yml
 cat manifest.yml
 gem install bundler
 
-# find bundle
-which bundle
-
-find / -name bundle
-
-echo $PATH
-
 BUNDLE_GEMFILE=cf.Gemfile /usr/local/bin/bundle
 BUNDLE_GEMFILE=cf.Gemfile /usr/local/bin/bundle exec buildpack-packager --cached --stack=cflinuxfs3
 cp php_buildpack*.zip ../php-buildpack-built/
