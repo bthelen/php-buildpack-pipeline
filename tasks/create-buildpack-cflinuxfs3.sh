@@ -52,6 +52,6 @@ cp php_buildpack*.zip ../php-buildpack-built/
 popd
 
 pushd php-buildpack-built
-rename "s/.zip$/-$(date +%Y%m%d%H%M%S).zip/" *.zip
+for file in php_buildpack*.zip; do mv "$file" "`echo $file | sed "s/.zip$/-$(date +%Y%m%d%H%M%S).zip/"`" ; done
 ls
 popd
