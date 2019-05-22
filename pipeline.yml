@@ -14,7 +14,7 @@ resources:
   type: git
   source:
     uri: https://github.com/cloudfoundry/php-buildpack.git
-    branch: master
+    tag_filter: v4.3.77
 - name: php-pipeline-source
   type: git
   source:
