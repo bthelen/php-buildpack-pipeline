@@ -16,7 +16,7 @@ exclude_files:
   - php_buildpack-*v*
 default_versions:
   - name: php
-    version: ##php-7-1-version##
+    version: ##php-7-2-version##
   - name: httpd
     version: 2.4.39
   - name: newrelic
@@ -156,8 +156,8 @@ dependencies:
     sha256: ##php-7-1-binary-sha##
     cf_stacks:
       - cflinuxfs3
-    source: https://php.net/distributions/php-7.1.28.tar.gz
-    source_sha256: 4df587338d4c5dfe27050c7ac72a6b7583ecaee9d3fbfc03427667a86e081999
+    source: https://php.net/distributions/php-7.1.29.tar.gz
+    source_sha256: bdd0e1707100c8b87f1be516f5b95a26e3eb4114d4316eaf0663bf292ead35bb
     modules:
       - amqp
       - apcu
@@ -236,8 +236,8 @@ dependencies:
     sha256: ##php-7-2-binary-sha##
     cf_stacks:
       - cflinuxfs3
-    source: https://php.net/distributions/php-7.2.17.tar.gz
-    source_sha256: e1c6c2553cdb7edbfa65b89e259690ed01b31b12d57349c90b6ed00a410f62b5
+    source: https://php.net/distributions/php-7.2.18.tar.gz
+    source_sha256: 48aeb291814f3cd3ba03c52e79e8e61896d0271fd4c228198f80a072e568f84b
     modules:
       - amqp
       - apcu
@@ -315,8 +315,8 @@ dependencies:
     sha256: ##php-7-3-binary-sha##
     cf_stacks:
       - cflinuxfs3
-    source: https://php.net/distributions/php-7.3.4.tar.gz
-    source_sha256: dd41ecf43fe1172030f41d2581909457a0af7bd137a057c3874e0b0f3c2e8761
+    source: https://php.net/distributions/php-7.3.5.tar.gz
+    source_sha256: c953749b7f3310a3a74f920ef698f6d1c04636d11656ac9ffb3ab10d34e30e1e
     modules:
       - apcu
       - bz2
