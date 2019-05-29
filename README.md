@@ -12,11 +12,7 @@ This Pipeline Takes 3 resources as input:
 - The Cloud Foundry Binary Builder - used to bind the PHP Binaries used in the Buildpack
 - The Official Cloud Foundry PHP Buildpack Source
 
-This Pipeline will output two resource:
-* The built PHP Buildpack for cflinuxfs2 which includes the Oracle drivers will be stored in the same S3 
-  bucket where the Oracle drivers are stored.
-* The built PHP Buildpack for cflinuxfs3 which includes the Oracle drivers will be stored in the same S3 
-  bucket where the Oracle drivers are stored.
+The built PHP Buildpack for cflinuxfs3 which includes the Oracle drivers will be stored in the same S3 bucket where the Oracle drivers are stored.
 
 ![Pipeline Image](./pipeline.png "Pipeline")
 
