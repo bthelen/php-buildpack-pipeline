@@ -14,12 +14,12 @@ resources:
   type: git
   source:
     uri: https://github.com/cloudfoundry/php-buildpack.git
-    tag_filter: v4.3.77
+    tag_filter: ((php-buildpack-version))
 - name: php-pipeline-source
   type: git
   source:
     uri: https://github.com/bthelen/php-buildpack-pipeline.git
-    branch: cflinuxfs3
+    branch: master
 - name: oracle-drivers
   type: s3
   source:

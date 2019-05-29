@@ -16,7 +16,7 @@ exclude_files:
   - php_buildpack-*v*
 default_versions:
   - name: php
-    version: ##php-7-1-version##
+    version: ##php-7-2-version##
   - name: httpd
     version: 2.4.39
   - name: newrelic
@@ -227,6 +227,153 @@ dependencies:
       - xmlrpc
       - xsl
       - yaf
+      - yaml
+      - zip
+      - zlib
+  - name: php
+    version: ##php-7-2-version##
+    uri: file://##php-7-2-binary-location##
+    sha256: ##php-7-2-binary-sha##
+    cf_stacks:
+      - cflinuxfs3
+    source: https://php.net/distributions/php-7.2.18.tar.gz
+    source_sha256: 48aeb291814f3cd3ba03c52e79e8e61896d0271fd4c228198f80a072e568f84b
+    modules:
+      - amqp
+      - apcu
+      - bz2
+      - cassandra
+      - curl
+      - dba
+      - enchant
+      - exif
+      - fileinfo
+      - ftp
+      - gd
+      - geoip
+      - gettext
+      - gmp
+      - igbinary
+      - imagick
+      - imap
+      - interbase
+      - ioncube
+      - ldap
+      - lua
+      - lzf
+      - mailparse
+      - maxminddb
+      - mbstring
+      - memcached
+      - mongodb
+      - msgpack
+      - mysqli
+      - oauth
+      - opcache
+      - openssl
+      - pcntl
+      - pdo
+      - pdo_firebird
+      - pdo_mysql
+      - pdo_odbc
+      - pdo_pgsql
+      - pdo_sqlite
+      - pdo_sqlsrv
+      - pgsql
+      - phalcon
+      - phpiredis
+      - protobuf
+      - pspell
+      - rdkafka
+      - readline
+      - recode
+      - redis
+      - shmop
+      - snmp
+      - soap
+      - sockets
+      - sodium
+      - sqlsrv
+      - stomp
+      - sysvmsg
+      - sysvsem
+      - sysvshm
+      - tideways
+      - tideways_xhprof
+      - tidy
+      - wddx
+      - xdebug
+      - xmlrpc
+      - xsl
+      - yaf
+      - yaml
+      - zip
+      - zlib
+  - name: php
+    version: ##php-7-3-version##
+    uri: file://##php-7-3-binary-location##
+    sha256: ##php-7-3-binary-sha##
+    cf_stacks:
+      - cflinuxfs3
+    source: https://php.net/distributions/php-7.3.5.tar.gz
+    source_sha256: c953749b7f3310a3a74f920ef698f6d1c04636d11656ac9ffb3ab10d34e30e1e
+    modules:
+      - apcu
+      - bz2
+      - cassandra
+      - curl
+      - dba
+      - enchant
+      - exif
+      - fileinfo
+      - ftp
+      - gd
+      - geoip
+      - gettext
+      - gmp
+      - igbinary
+      - imagick
+      - imap
+      - interbase
+      - ldap
+      - lua
+      - lzf
+      - maxminddb
+      - mbstring
+      - mongodb
+      - msgpack
+      - mysqli
+      - oauth
+      - opcache
+      - openssl
+      - pcntl
+      - pdo
+      - pdo_firebird
+      - pdo_mysql
+      - pdo_odbc
+      - pdo_pgsql
+      - pdo_sqlite
+      - pgsql
+      - phpiredis
+      - protobuf
+      - pspell
+      - rdkafka
+      - readline
+      - recode
+      - redis
+      - shmop
+      - snmp
+      - soap
+      - sockets
+      - stomp
+      - sysvmsg
+      - sysvsem
+      - sysvshm
+      - tideways_xhprof
+      - tidy
+      - wddx
+      - xmlrpc
+      - xsl
       - yaml
       - zip
       - zlib
