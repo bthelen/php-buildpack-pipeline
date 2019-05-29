@@ -169,8 +169,3 @@ This Pipeline will output two resource:
 
 * Use [cf create-buildpack or cf update-buildpack](https://docs.cloudfoundry.org/adminguide/buildpacks.html)
   as per the Cloud Foundry docs.
-
-## Caveats/Limitations
-
-* Currently this pipeline only builds two versions of PHP binaries -- `5.6.40` and `7.1.26`.
-* You can modify these versions by editing the `PHP_5_VERSION` and `PHP_7_VERSION` variables in `pipeline.yml` 
