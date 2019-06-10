@@ -19,7 +19,7 @@ resources:
   type: git
   source:
     uri: https://github.com/bthelen/php-buildpack-pipeline.git
-    branch: master
+    branch: php7.2
 - name: oracle-drivers
   type: s3
   source:
