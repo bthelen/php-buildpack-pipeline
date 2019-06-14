@@ -2,6 +2,8 @@
 
 set -xe
 
+export STACK=cflinuxfs3
+
 # extract oracle drivers and sym link
 pushd oracle-drivers
 pwd
