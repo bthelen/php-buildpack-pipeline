@@ -58,7 +58,6 @@ jobs:
     - task: create-binaries
       file: php-pipeline-source/tasks/create-binaries.yml
       params:
-        PHP_5_VERSION: 5.6.40
         PHP_7_1_VERSION: 7.1.29
         PHP_7_2_VERSION: 7.2.18
         PHP_7_3_VERSION: 7.3.5
@@ -79,7 +78,6 @@ jobs:
     - task: create-buildpack-cflinuxfs3
       file: php-pipeline-source/tasks/create-buildpack-cflinuxfs3.yml
       params:
-        PHP_5_VERSION: 5.6.40
         PHP_7_1_VERSION: 7.1.29
         PHP_7_2_VERSION: 7.2.18
         PHP_7_3_VERSION: 7.3.5
