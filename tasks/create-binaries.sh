@@ -21,16 +21,16 @@ popd
 
 pushd /binary-builder
 #Build a 7.1
-#cp ../php-pipeline-source/php71-extensions.yml .
-#./bin/binary-builder --name=php7 --version=$PHP_7_1_VERSION --md5=32ea3ce54d7d5ed03c6c600dffd65813 --php-extensions-file=./php71-extensions.yml
+cp ../php-pipeline-source/php71-extensions.yml .
+./bin/binary-builder --name=php7 --version=$PHP_7_1_VERSION --md5=32ea3ce54d7d5ed03c6c600dffd65813 --php-extensions-file=./php71-extensions.yml
 
 #Build a 7.2
 cp ../php-pipeline-source/php72-extensions.yml .
 ./bin/binary-builder --name=php7 --version=$PHP_7_2_VERSION --md5=32ea3ce54d7d5ed03c6c600dffd65813 --php-extensions-file=./php72-extensions.yml
 
 #Build a 7.3
-#cp ../php-pipeline-source/php73-extensions.yml .
-#./bin/binary-builder --name=php7 --version=$PHP_7_3_VERSION --md5=32ea3ce54d7d5ed03c6c600dffd65813 --php-extensions-file=./php73-extensions.yml
+cp ../php-pipeline-source/php73-extensions.yml .
+./bin/binary-builder --name=php7 --version=$PHP_7_3_VERSION --md5=32ea3ce54d7d5ed03c6c600dffd65813 --php-extensions-file=./php73-extensions.yml
 
 popd
 

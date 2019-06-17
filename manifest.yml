@@ -151,6 +151,86 @@ dependencies:
     source: http://nginx.org/download/nginx-1.16.0.tar.gz
     source_sha256: 4fd376bad78797e7f18094a00f0f1088259326436b537eb5af69b01be2ca1345
   - name: php
+    version: ##php-7-1-version##
+    uri: file://##php-7-1-binary-location##
+    sha256: ##php-7-1-binary-sha##
+    cf_stacks:
+      - cflinuxfs3
+    source: https://php.net/distributions/php-7.1.29.tar.gz
+    source_sha256: bdd0e1707100c8b87f1be516f5b95a26e3eb4114d4316eaf0663bf292ead35bb
+    modules:
+      - amqp
+      - apcu
+      - bz2
+      - cassandra
+      - curl
+      - dba
+      - enchant
+      - exif
+      - fileinfo
+      - ftp
+      - gd
+      - geoip
+      - gettext
+      - gmp
+      - igbinary
+      - imagick
+      - imap
+      - interbase
+      - ioncube
+      - ldap
+      - lua
+      - lzf
+      - mailparse
+      - maxminddb
+      - mbstring
+      - mcrypt
+      - memcached
+      - mongodb
+      - msgpack
+      - mysqli
+      - oauth
+      - opcache
+      - openssl
+      - pcntl
+      - pdo
+      - pdo_firebird
+      - pdo_mysql
+      - pdo_odbc
+      - pdo_pgsql
+      - pdo_sqlite
+      - pdo_sqlsrv
+      - pgsql
+      - phalcon
+      - phpiredis
+      - protobuf
+      - pspell
+      - rdkafka
+      - readline
+      - recode
+      - redis
+      - shmop
+      - snmp
+      - soap
+      - sockets
+      - solr
+      - sqlsrv
+      - stomp
+      - sysvmsg
+      - sysvsem
+      - sysvshm
+      - tideways
+      - tideways_xhprof
+      - tidy
+      - wddx
+      - xdebug
+      - xmlrpc
+      - xsl
+      - yaf
+      - yaml
+      - zip
+      - zlib
+  - name: php
     version: ##php-7-2-version##
     uri: file://##php-7-2-binary-location##
     sha256: ##php-7-2-binary-sha##
@@ -226,6 +306,74 @@ dependencies:
       - xmlrpc
       - xsl
       - yaf
+      - yaml
+      - zip
+      - zlib
+  - name: php
+    version: ##php-7-3-version##
+    uri: file://##php-7-3-binary-location##
+    sha256: ##php-7-3-binary-sha##
+    cf_stacks:
+      - cflinuxfs3
+    source: https://php.net/distributions/php-7.3.5.tar.gz
+    source_sha256: c953749b7f3310a3a74f920ef698f6d1c04636d11656ac9ffb3ab10d34e30e1e
+    modules:
+      - apcu
+      - bz2
+      - cassandra
+      - curl
+      - dba
+      - enchant
+      - exif
+      - fileinfo
+      - ftp
+      - gd
+      - geoip
+      - gettext
+      - gmp
+      - igbinary
+      - imagick
+      - imap
+      - interbase
+      - ldap
+      - lua
+      - lzf
+      - maxminddb
+      - mbstring
+      - mongodb
+      - msgpack
+      - mysqli
+      - oauth
+      - opcache
+      - openssl
+      - pcntl
+      - pdo
+      - pdo_firebird
+      - pdo_mysql
+      - pdo_odbc
+      - pdo_pgsql
+      - pdo_sqlite
+      - pgsql
+      - phpiredis
+      - protobuf
+      - pspell
+      - rdkafka
+      - readline
+      - recode
+      - redis
+      - shmop
+      - snmp
+      - soap
+      - sockets
+      - stomp
+      - sysvmsg
+      - sysvsem
+      - sysvshm
+      - tideways_xhprof
+      - tidy
+      - wddx
+      - xmlrpc
+      - xsl
       - yaml
       - zip
       - zlib
