@@ -55,32 +55,45 @@ jobs:
       trigger: true
     - get: oracle-drivers
       trigger: false
-    - task: create-binaries
-      file: php-pipeline-source/tasks/create-binaries.yml
-      params:
-        PHP_7_1_VERSION: 7.1.29
-        PHP_7_2_VERSION: 7.2.18
-        PHP_7_3_VERSION: 7.3.5
-    - put: php-binaries
-      params:
-        file: php-binaries-built/php_binaries-v*.zip
-- name: create-buildpack-cflinuxfs3
-  serial: true
-  plan:
-    - get: php-pipeline-source
-      trigger: true
-      passed: [create-php-binaries]
-    - get: php-binaries
-      trigger: true
-      passed: [create-php-binaries]
-    - get: php-buildpack-source
-      trigger: true
-    - task: create-buildpack-cflinuxfs3
-      file: php-pipeline-source/tasks/create-buildpack-cflinuxfs3.yml
-      params:
-        PHP_7_1_VERSION: 7.1.29
-        PHP_7_2_VERSION: 7.2.18
-        PHP_7_3_VERSION: 7.3.5
-    - put: php-oracle-buildpack-cflinuxfs3
-      params:
-        file: php-buildpack-built/php_buildpack-cached-cflinuxfs3-v*.zip
+    in_parallel:
+      - task: create-71-binaries
+        file: php-pipeline-source/tasks/create-binaries.yml
+        params:
+          PHP_VERSION: 7.1.29
+          MD5_SUM: 32ea3ce54d7d5ed03c6c600dffd65813
+          EXTENSIONS_FILE: ./php71-extensions.yml
+      - task: create-72-binaries
+        file: php-pipeline-source/tasks/create-binaries.yml
+        params:
+          PHP_VERSION: 7.2.18
+          MD5_SUM: 32ea3ce54d7d5ed03c6c600dffd65813
+          EXTENSIONS_FILE: ./php72-extensions.yml
+      - task: create-73-binaries
+        file: php-pipeline-source/tasks/create-binaries.yml
+        params:
+          PHP_VERSION: 7.3.5
+          MD5_SUM: 32ea3ce54d7d5ed03c6c600dffd65813
+          EXTENSIONS_FILE: ./php73-extensions.yml
+      - put: php-binaries
+        params:
+          file: php-binaries-built/php_binaries-v*.zip
+#- name: create-buildpack-cflinuxfs3
+#  serial: true
+#  plan:
+#    - get: php-pipeline-source
+#      trigger: true
+#      passed: [create-php-binaries]
+#    - get: php-binaries
+#      trigger: true
+#      passed: [create-php-binaries]
+#    - get: php-buildpack-source
+#      trigger: true
+#    - task: create-buildpack-cflinuxfs3
+#      file: php-pipeline-source/tasks/create-buildpack-cflinuxfs3.yml
+#      params:
+#        PHP_7_1_VERSION: 7.1.29
+#        PHP_7_2_VERSION: 7.2.18
+#        PHP_7_3_VERSION: 7.3.5
+#    - put: php-oracle-buildpack-cflinuxfs3
+#      params:
+#        file: php-buildpack-built/php_buildpack-cached-cflinuxfs3-v*.zip
