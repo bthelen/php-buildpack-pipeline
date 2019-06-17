@@ -6,6 +6,7 @@ image_resource:
     repository: cloudfoundry/cflinuxfs3
 
 inputs:
+  - name: php-pipeline-source
   - name: php-binaries-built
 
 run:
