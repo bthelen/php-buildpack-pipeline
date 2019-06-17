@@ -60,19 +60,16 @@ jobs:
         file: php-pipeline-source/tasks/create-binaries.yml
         params:
           PHP_VERSION: 7.1.29
-          MD5_SUM: 32ea3ce54d7d5ed03c6c600dffd65813
           EXTENSIONS_FILE: php71-extensions.yml
       - task: create-72-binaries
         file: php-pipeline-source/tasks/create-binaries.yml
         params:
           PHP_VERSION: 7.2.18
-          MD5_SUM: 32ea3ce54d7d5ed03c6c600dffd65813
           EXTENSIONS_FILE: php72-extensions.yml
       - task: create-73-binaries
         file: php-pipeline-source/tasks/create-binaries.yml
         params:
           PHP_VERSION: 7.3.5
-          MD5_SUM: 32ea3ce54d7d5ed03c6c600dffd65813
           EXTENSIONS_FILE: php73-extensions.yml
     - task: combine-binaries
       file: php-pipeline-source/tasks/combine-binaries.yml

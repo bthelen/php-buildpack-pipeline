@@ -7,7 +7,6 @@ image_resource:
 
 params:
   PHP_VERSION:
-  MD5_SUM:
   EXTENSIONS_FILE:
 
 inputs:

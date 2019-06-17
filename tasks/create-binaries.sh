@@ -20,16 +20,12 @@ ln -s `pwd` /binary-builder
 popd
 
 pushd /binary-builder
-#Run the builder
+#Run the builder - for some reason the md5sum is required but not used
 cp ../php-pipeline-source/$EXTENSIONS_FILE .
-./bin/binary-builder --name=php7 --version=$PHP_VERSION --md5=$MD5_SUM --php-extensions-file=./$EXTENSIONS_FILE
+./bin/binary-builder --name=php7 --version=$PHP_VERSION --md5=irrelevant --php-extensions-file=./$EXTENSIONS_FILE
 
 popd
 
 pushd binary-builder-source
 cp *.tgz ../php-binaries-built/
 popd
-
-#pushd php-binaries-built
-#zip php_binaries-v$(date +%Y%m%d%H%M%S).zip *.tgz
-#sha256sum *
