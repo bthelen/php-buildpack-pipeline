@@ -74,9 +74,11 @@ jobs:
           PHP_VERSION: 7.3.5
           MD5_SUM: 32ea3ce54d7d5ed03c6c600dffd65813
           EXTENSIONS_FILE: php73-extensions.yml
-      - put: php-binaries
-        params:
-          file: php-binaries-built/php_binaries-v*.zip
+    - task: combine-binaries
+      file: php-pipeline-source/tasks/combine-binaries.yml
+    - put: php-binaries
+      params:
+        file: php-binaries-built/php_binaries-v*.zip
 - name: create-buildpack-cflinuxfs3
   serial: true
   plan:
