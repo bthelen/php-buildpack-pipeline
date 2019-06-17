@@ -21,8 +21,8 @@ popd
 
 pushd /binary-builder
 #Run the builder
-cp ../php-pipeline-source/php71-extensions.yml .
-./bin/binary-builder --name=php7 --version=$PHP_VERSION --md5=$MD5_SUM --php-extensions-file=$EXTENSIONS_FILE
+cp ../php-pipeline-source/$EXTENSIONS_FILE .
+./bin/binary-builder --name=php7 --version=$PHP_VERSION --md5=$MD5_SUM --php-extensions-file=./$EXTENSIONS_FILE
 
 popd
 
