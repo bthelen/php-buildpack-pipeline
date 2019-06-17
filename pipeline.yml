@@ -2,7 +2,6 @@ groups:
 - name: PHP
   jobs:
   - create-php-binaries
-  - create-buildpack-cflinuxfs3
 
 resources:
 - name: binary-builder-source
