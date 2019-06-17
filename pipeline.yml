@@ -28,12 +28,28 @@ resources:
     regexp: oracle-instantclient-12-with-sdk-v(.*).tar.gz
     access_key_id: ((access-key-id))
     secret_access_key: ((secret-access-key))
-- name: php-binaries
+- name: php-71-binaries
   type: s3
   source:
     endpoint: ((endpoint))
     bucket: ((s3-bucket-name))
-    regexp: php_binaries-v(.*).zip
+    regexp: php7-7.1.(.*)-linux-x64.tgz
+    access_key_id: ((access-key-id))
+    secret_access_key: ((secret-access-key))
+- name: php-72-binaries
+  type: s3
+  source:
+    endpoint: ((endpoint))
+    bucket: ((s3-bucket-name))
+    regexp: php7-7.2.(.*)-linux-x64.tgz
+    access_key_id: ((access-key-id))
+    secret_access_key: ((secret-access-key))
+- name: php-73-binaries
+  type: s3
+  source:
+    endpoint: ((endpoint))
+    bucket: ((s3-bucket-name))
+    regexp: php7-7.3.(.*)-linux-x64.tgz
     access_key_id: ((access-key-id))
     secret_access_key: ((secret-access-key))
 - name: php-oracle-buildpack-cflinuxfs3
@@ -46,8 +62,7 @@ resources:
     secret_access_key: ((secret-access-key))
 
 jobs:
-- name: create-php-binaries
-  serial: true
+- name: create-php-71-binaries
   plan:
     - get: php-pipeline-source
       trigger: true
@@ -55,38 +70,62 @@ jobs:
       trigger: true
     - get: oracle-drivers
       trigger: false
-    - in_parallel:
-      - task: create-71-binaries
-        file: php-pipeline-source/tasks/create-binaries.yml
-        params:
-          PHP_VERSION: 7.1.29
-          EXTENSIONS_FILE: php71-extensions.yml
-      - task: create-72-binaries
-        file: php-pipeline-source/tasks/create-binaries.yml
-        params:
-          PHP_VERSION: 7.2.18
-          EXTENSIONS_FILE: php72-extensions.yml
-      - task: create-73-binaries
-        file: php-pipeline-source/tasks/create-binaries.yml
-        params:
-          PHP_VERSION: 7.3.5
-          EXTENSIONS_FILE: php73-extensions.yml
-    - task: combine-binaries
-      file: php-pipeline-source/tasks/combine-binaries.yml
-    - put: php-binaries
+    - task: create-71-binaries
+      file: php-pipeline-source/tasks/create-binaries.yml
       params:
-        file: php-binaries-built/php_binaries-v*.zip
+        PHP_VERSION: 7.1.29
+        EXTENSIONS_FILE: php71-extensions.yml
+    - put: php-71-binaries
+      params:
+        file: php-binaries-built/php7-7.1.*-linux-x64.tgz
+- name: create-php-72-binaries
+  plan:
+    - get: php-pipeline-source
+      trigger: true
+    - get: binary-builder-source
+      trigger: true
+    - get: oracle-drivers
+      trigger: false
+    - task: create-72-binaries
+      file: php-pipeline-source/tasks/create-binaries.yml
+      params:
+        PHP_VERSION: 7.2.18
+        EXTENSIONS_FILE: php72-extensions.yml
+    - put: php-72-binaries
+      params:
+        file: php-binaries-built/php7-7.2.*-linux-x64.tgz
+- name: create-php-73-binaries
+  plan:
+    - get: php-pipeline-source
+      trigger: true
+    - get: binary-builder-source
+      trigger: true
+    - get: oracle-drivers
+      trigger: false
+    - task: create-73-binaries
+      file: php-pipeline-source/tasks/create-binaries.yml
+      params:
+        PHP_VERSION: 7.3.5
+        EXTENSIONS_FILE: php73-extensions.yml
+    - put: php-73-binaries
+      params:
+        file: php-binaries-built/php7-7.3.*-linux-x64.tgz
 - name: create-buildpack-cflinuxfs3
   serial: true
   plan:
     - get: php-pipeline-source
-      trigger: true
-      passed: [create-php-binaries]
-    - get: php-binaries
-      trigger: true
-      passed: [create-php-binaries]
+      trigger: false
+    - get: php-71-binaries
+      trigger: false
+      passed: [create-php-71-binaries]
+    - get: php-72-binaries
+      trigger: false
+      passed: [create-php-72-binaries]
+    - get: php-73-binaries
+      trigger: false
+      passed: [create-php-73-binaries]
     - get: php-buildpack-source
-      trigger: true
+      trigger: false
     - task: create-buildpack-cflinuxfs3
       file: php-pipeline-source/tasks/create-buildpack-cflinuxfs3.yml
       params:
