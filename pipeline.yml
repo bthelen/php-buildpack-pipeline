@@ -1,7 +1,9 @@
 groups:
 - name: PHP
   jobs:
-  - create-php-binaries
+  - create-php-71-binaries
+  - create-php-72-binaries
+  - create-php-73-binaries
   - create-buildpack-cflinuxfs3
 
 resources:
