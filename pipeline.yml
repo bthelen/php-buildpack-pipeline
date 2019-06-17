@@ -55,7 +55,7 @@ jobs:
       trigger: true
     - get: oracle-drivers
       trigger: false
-    in_parallel:
+    - in_parallel:
       - task: create-71-binaries
         file: php-pipeline-source/tasks/create-binaries.yml
         params:
