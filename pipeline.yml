@@ -75,7 +75,7 @@ jobs:
     - task: create-71-binaries
       file: php-pipeline-source/tasks/create-binaries.yml
       params:
-        PHP_VERSION: 7.1.29
+        PHP_VERSION: ((php-7-1-version))
         EXTENSIONS_FILE: php71-extensions.yml
     - put: php-71-binaries
       params:
@@ -91,7 +91,7 @@ jobs:
     - task: create-72-binaries
       file: php-pipeline-source/tasks/create-binaries.yml
       params:
-        PHP_VERSION: 7.2.18
+        PHP_VERSION: ((php-7-2-version))
         EXTENSIONS_FILE: php72-extensions.yml
     - put: php-72-binaries
       params:
@@ -107,7 +107,7 @@ jobs:
     - task: create-73-binaries
       file: php-pipeline-source/tasks/create-binaries.yml
       params:
-        PHP_VERSION: 7.3.5
+        PHP_VERSION: ((php-7-3-version))
         EXTENSIONS_FILE: php73-extensions.yml
     - put: php-73-binaries
       params:
@@ -131,9 +131,9 @@ jobs:
     - task: create-buildpack-cflinuxfs3
       file: php-pipeline-source/tasks/create-buildpack-cflinuxfs3.yml
       params:
-        PHP_7_1_VERSION: 7.1.29
-        PHP_7_2_VERSION: 7.2.18
-        PHP_7_3_VERSION: 7.3.5
+        PHP_7_1_VERSION: ((php-7-1-version))
+        PHP_7_2_VERSION: ((php-7-2-version))
+        PHP_7_3_VERSION: ((php-7-3-version))
     - put: php-oracle-buildpack-cflinuxfs3
       params:
         file: php-buildpack-built/php_buildpack-cached-cflinuxfs3-v*.zip
