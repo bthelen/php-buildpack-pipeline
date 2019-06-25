@@ -199,7 +199,7 @@ jobs:
         bump: patch
     - put: php-71-version
       params:
-        version: php-71-version/number
+        file: php-71-version/number
 - name: bump-php-72-version
   plan:
     - get: php-72-version
@@ -207,7 +207,7 @@ jobs:
         bump: patch
     - put: php-72-version
       params:
-        version: php-72-version/number
+        file: php-72-version/number
 - name: bump-php-73-version
   plan:
     - get: php-73-version
@@ -215,4 +215,4 @@ jobs:
         bump: patch
     - put: php-73-version
       params:
-        version: php-73-version/number
+        file: php-73-version/number
