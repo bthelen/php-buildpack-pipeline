@@ -1,10 +1,19 @@
 groups:
-- name: PHP
+- name: All
   jobs:
   - create-php-71-binaries
   - create-php-72-binaries
   - create-php-73-binaries
   - create-buildpack-cflinuxfs3
+  - bump-php-71-version
+  - bump-php-72-version
+  - bump-php-73-version
+- name: Build Pipeline
+  jobs:
+    - create-php-71-binaries
+    - create-php-72-binaries
+    - create-php-73-binaries
+    - create-buildpack-cflinuxfs3
 - name: Versions
   jobs:
   - bump-php-71-version
