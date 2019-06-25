@@ -19,6 +19,7 @@ pushd php-buildpack-source
 cp ../php-pipeline-source/manifest.yml .
 
 #PHP7.1 Section
+PHP_7_1_VERSION=find /php-71-binaries/ -name "php7-*-linux-x64.tgz" | awk 'BEGIN { FS = "-" } ; { print $2 }'
 PHP_7_1_BINARY_LOCATION_ESCAPED="\/php-71-binaries\/php7-$PHP_7_1_VERSION-linux-x64.tgz"
 PHP_7_1_BINARY_LOCATION="/php-71-binaries/php7-$PHP_7_1_VERSION-linux-x64.tgz"
 PHP_7_1_BINARY_SHA256=$(sha256sum $PHP_7_1_BINARY_LOCATION | awk '{print $1}')
@@ -27,6 +28,7 @@ sed -i s/'##php-7-1-binary-location##'/$PHP_7_1_BINARY_LOCATION_ESCAPED/g manife
 sed -i s/'##php-7-1-binary-sha##'/$PHP_7_1_BINARY_SHA256/g manifest.yml
 
 #PHP7.2 Section
+PHP_7_2_VERSION=find /php-72-binaries/ -name "php7-*-linux-x64.tgz" | awk 'BEGIN { FS = "-" } ; { print $2 }'
 PHP_7_2_BINARY_LOCATION_ESCAPED="\/php-72-binaries\/php7-$PHP_7_2_VERSION-linux-x64.tgz"
 PHP_7_2_BINARY_LOCATION="/php-72-binaries/php7-$PHP_7_2_VERSION-linux-x64.tgz"
 PHP_7_2_BINARY_SHA256=$(sha256sum $PHP_7_2_BINARY_LOCATION | awk '{print $1}')
@@ -35,6 +37,7 @@ sed -i s/'##php-7-2-binary-location##'/$PHP_7_2_BINARY_LOCATION_ESCAPED/g manife
 sed -i s/'##php-7-2-binary-sha##'/$PHP_7_2_BINARY_SHA256/g manifest.yml
 
 #PHP7.3 Section
+PHP_7_3_VERSION=find /php-73-binaries/ -name "php7-*-linux-x64.tgz" | awk 'BEGIN { FS = "-" } ; { print $2 }'
 PHP_7_3_BINARY_LOCATION_ESCAPED="\/php-73-binaries\/php7-$PHP_7_3_VERSION-linux-x64.tgz"
 PHP_7_3_BINARY_LOCATION="/php-73-binaries/php7-$PHP_7_3_VERSION-linux-x64.tgz"
 PHP_7_3_BINARY_SHA256=$(sha256sum $PHP_7_3_BINARY_LOCATION | awk '{print $1}')

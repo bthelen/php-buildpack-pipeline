@@ -175,10 +175,6 @@ jobs:
       trigger: false
     - task: create-buildpack-cflinuxfs3
       file: php-pipeline-source/tasks/create-buildpack-cflinuxfs3.yml
-      params:
-        PHP_7_1_VERSION: ((php-7-1-version))
-        PHP_7_2_VERSION: ((php-7-2-version))
-        PHP_7_3_VERSION: ((php-7-3-version))
     - put: php-oracle-buildpack-cflinuxfs3
       params:
         file: php-buildpack-built/php_buildpack-cached-cflinuxfs3-v*.zip
