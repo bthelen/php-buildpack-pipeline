@@ -5,6 +5,11 @@ groups:
   - create-php-72-binaries
   - create-php-73-binaries
   - create-buildpack-cflinuxfs3
+- name: Versions
+  jobs:
+  - bump-php-71-version
+  - bump-php-72-version
+  - bump-php-73-version
 
 resources:
 - name: binary-builder-source
@@ -178,3 +183,27 @@ jobs:
     - put: php-oracle-buildpack-cflinuxfs3
       params:
         file: php-buildpack-built/php_buildpack-cached-cflinuxfs3-v*.zip
+- name: bump-php-71-version
+  plan:
+    - get: php-71-version
+      params:
+        bump: patch
+    - put: php-71-version
+      params:
+        version: php-71-version/number
+- name: bump-php-72-version
+  plan:
+    - get: php-72-version
+      params:
+        bump: patch
+    - put: php-72-version
+      params:
+        version: php-72-version/number
+- name: bump-php-73-version
+  plan:
+    - get: php-73-version
+      params:
+        bump: patch
+    - put: php-73-version
+      params:
+        version: php-73-version/number
