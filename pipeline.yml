@@ -104,7 +104,7 @@ jobs:
     - task: create-71-binaries
       file: php-pipeline-source/tasks/create-binaries.yml
       params:
-        PHP_VERSION: ((php-7-1-version))
+        PHP_VERSION: 71
         EXTENSIONS_FILE: php71-extensions.yml
     - put: php-71-binaries
       params:
@@ -122,7 +122,7 @@ jobs:
     - task: create-72-binaries
       file: php-pipeline-source/tasks/create-binaries.yml
       params:
-        PHP_VERSION: ((php-7-2-version))
+        PHP_VERSION: 72
         EXTENSIONS_FILE: php72-extensions.yml
     - put: php-72-binaries
       params:
@@ -140,7 +140,7 @@ jobs:
     - task: create-73-binaries
       file: php-pipeline-source/tasks/create-binaries.yml
       params:
-        PHP_VERSION: ((php-7-3-version))
+        PHP_VERSION: 73
         EXTENSIONS_FILE: php73-extensions.yml
     - put: php-73-binaries
       params:
