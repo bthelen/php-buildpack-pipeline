@@ -34,7 +34,6 @@ resources:
   type: semver
   source:
     driver: s3
-    key: php-71-version
     endpoint: ((endpoint))
     bucket: ((s3-bucket-name))
     access_key_id: ((access-key-id))
