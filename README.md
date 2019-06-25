@@ -6,13 +6,19 @@ PHP Buildpack which includes Oracle database drivers for applications which need
 database.  It can easily be modified to create online buildpacks if you prefer.  For more detailed information
 about building custom buildpacks, please refer to the official [Cloud Foundry Documentation](https://docs.pivotal.io/pivotalcf/2-2/buildpacks/developing-buildpacks.html).
 
-This Pipeline Takes 3 resources as input:
+This pipeline will create a buildpack which includes PHP binaries for 7.1.x, 7.2.x, and 7.3.x.  Support for 7.4.x won't be added
+until after it is included in the [official buildpack from Cloud Foundry](https://github.com/cloudfoundry/php-buildpack).  
+
+This Pipeline Takes the following resources as input:
 * An S3 bucket containing a `.tar.gz` file copy of the Oracle 12c drivers and SDK
 - This repo's source
 - The Cloud Foundry Binary Builder - used to bind the PHP Binaries used in the Buildpack
 - The Official Cloud Foundry PHP Buildpack Source
+- The Version of PHP 7.1.x source code to build
+- The Version of PHP 7.2.x source code to build
+- The Version of PHP 7.3.x source code to build 
 
-The built PHP Buildpack for cflinuxfs3 which includes the Oracle drivers will be stored in the same S3 bucket where the Oracle drivers are stored.
+The built PHP Binaries and the Buildpack for cflinuxfs3 which includes the Oracle drivers will be stored in the same S3 bucket where the Oracle drivers are stored.
 
 ![Pipeline Image](./pipeline.png "Pipeline")
 
@@ -155,7 +161,10 @@ The built PHP Buildpack for cflinuxfs3 which includes the Oracle drivers will be
   -rw-rw-r--  0 bthelen staff       212 Jul  7  2014 ./._xstreams.jar
   -rw-rw-r--  0 bthelen staff     71202 Jul  7  2014 xstreams.jar
   ``` 
-- Store that `.tar.gz` file in your S3 bucket. 
+- Store that `.tar.gz` file in your S3 bucket.
+- Create a version file named php-71-version for the PHP 7.1.x source you wish to build and store that in your S3 bucket. 
+- Create a version file named php-72-version for the PHP 7.2.x source you wish to build and store that in your S3 bucket.
+- Create a version file named php-73-version for the PHP 7.3.x source you wish to build and store that in your S3 bucket.
 
 ### Add your pipeline to your Concourse 
 
@@ -165,3 +174,16 @@ The built PHP Buildpack for cflinuxfs3 which includes the Oracle drivers will be
 
 * Use [cf create-buildpack or cf update-buildpack](https://docs.cloudfoundry.org/adminguide/buildpacks.html)
   as per the Cloud Foundry docs.
+
+### Setting the version of PHP source to build
+
+In order to control the version of the PHP sources to build, you can use the relevant version bump job
+provided to increment the version by one patch level.  For example, you would use `bump-php-71-version` to move
+from version `7.1.29` to `7.1.30`.  Alternately you can overwrite the `php-71-version` file in your S3 bucket 
+to make the same change occur or to change multiple minor versions at once.
+
+### Setting the version of the Cloud Foundry Buildpack to use
+
+The version of the Cloud Foundry Buildpack to use is set in the `credentials.yml` file you use to set the pipeline.  
+This is necessary because it uses a git tag to control this which must be provided at pipeline definition time.  
+After making changes to that file, you must set the pipeline again.
