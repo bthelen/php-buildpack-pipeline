@@ -30,7 +30,7 @@ resources:
     regexp: oracle-instantclient-12-with-sdk-v(.*).tar.gz
     access_key_id: ((access-key-id))
     secret_access_key: ((secret-access-key))
-- name: php-71-version
+- name: php-version
   type: semver
   source:
     driver: s3
@@ -47,30 +47,12 @@ resources:
     regexp: php7-7.1.(.*)-linux-x64.tgz
     access_key_id: ((access-key-id))
     secret_access_key: ((secret-access-key))
-- name: php-72-version
-  type: semver
-  source:
-    driver: s3
-    key: php-72-version
-    endpoint: ((endpoint))
-    bucket: ((s3-bucket-name))
-    access_key_id: ((access-key-id))
-    secret_access_key: ((secret-access-key))
 - name: php-72-binaries
   type: s3
   source:
     endpoint: ((endpoint))
     bucket: ((s3-bucket-name))
     regexp: php7-7.2.(.*)-linux-x64.tgz
-    access_key_id: ((access-key-id))
-    secret_access_key: ((secret-access-key))
-- name: php-73-version
-  type: semver
-  source:
-    driver: s3
-    key: php-73-version
-    endpoint: ((endpoint))
-    bucket: ((s3-bucket-name))
     access_key_id: ((access-key-id))
     secret_access_key: ((secret-access-key))
 - name: php-73-binaries
@@ -99,8 +81,10 @@ jobs:
       trigger: true
     - get: oracle-drivers
       trigger: false
-    - get: php-71-version
+    - get: php-version
       trigger: true
+      params:
+        key: php-71-version
     - task: create-71-binaries
       file: php-pipeline-source/tasks/create-binaries.yml
       params:
@@ -117,8 +101,10 @@ jobs:
       trigger: true
     - get: oracle-drivers
       trigger: false
-    - get: php-72-version
+    - get: php-version
       trigger: true
+      params:
+        key: php-72-version
     - task: create-72-binaries
       file: php-pipeline-source/tasks/create-binaries.yml
       params:
@@ -135,8 +121,10 @@ jobs:
       trigger: true
     - get: oracle-drivers
       trigger: false
-    - get: php-73-version
+    - get: php-version
       trigger: true
+      params:
+        key: php-73-version
     - task: create-73-binaries
       file: php-pipeline-source/tasks/create-binaries.yml
       params:

@@ -13,9 +13,7 @@ inputs:
 - name: php-pipeline-source
 - name: binary-builder-source
 - name: oracle-drivers
-- name: php-71-version
-- name: php-72-version
-- name: php-73-version
+- name: php-version
 
 outputs:
 - name: php-binaries-built
