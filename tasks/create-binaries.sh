@@ -22,13 +22,13 @@ popd
 #get the version from the file
 if [[ $PHP_VERSION = "71" ]]
 then
-    export PHP_VERSION_NUMBER=`cat php-71-version/php-71-version`
+    export PHP_VERSION_NUMBER=`cat php-71-version/version`
 elif [[ $PHP_VERSION = "72" ]]
 then
-    export PHP_VERSION_NUMBER=`cat php-72-version/php-72-version`
+    export PHP_VERSION_NUMBER=`cat php-72-version/version`
 elif [[ $PHP_VERSION = "73" ]]
 then
-    export PHP_VERSION_NUMBER=`cat php-73-version/php-73-version`
+    export PHP_VERSION_NUMBER=`cat php-73-version/version`
 else
     exit 1
 fi
