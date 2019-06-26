@@ -108,9 +108,9 @@ jobs:
 - name: create-php-71-binaries
   plan:
     - get: php-pipeline-source
-      trigger: true
+      trigger: false
     - get: binary-builder-source
-      trigger: true
+      trigger: false
     - get: oracle-drivers
       trigger: false
     - get: php-71-version
@@ -130,9 +130,9 @@ jobs:
 - name: create-php-72-binaries
   plan:
     - get: php-pipeline-source
-      trigger: true
+      trigger: false
     - get: binary-builder-source
-      trigger: true
+      trigger: false
     - get: oracle-drivers
       trigger: false
     - get: php-71-version
@@ -152,9 +152,9 @@ jobs:
 - name: create-php-73-binaries
   plan:
     - get: php-pipeline-source
-      trigger: true
+      trigger: false
     - get: binary-builder-source
-      trigger: true
+      trigger: false
     - get: oracle-drivers
       trigger: false
     - get: php-71-version

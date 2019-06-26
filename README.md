@@ -187,3 +187,9 @@ to make the same change occur or to change multiple minor versions at once.
 The version of the Cloud Foundry Buildpack to use is set in the `credentials.yml` file you use to set the pipeline.  
 This is necessary because it uses a git tag to control this which must be provided at pipeline definition time.  
 After making changes to that file, you must set the pipeline again.
+
+### Triggering builds
+
+The create binary jobs are triggered by an update to their version file in S3.  The create buildpack job is never triggered
+automatically, instead run this one manually when you know there are binaries you would like to package.
+
