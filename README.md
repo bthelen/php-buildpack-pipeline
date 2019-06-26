@@ -193,3 +193,10 @@ After making changes to that file, you must set the pipeline again.
 The create binary jobs are triggered by an update to their version file in S3.  The create buildpack job is never triggered
 automatically, instead run this one manually when you know there are binaries you would like to package.
 
+### What about the mysterious phpxx-extensions.yml files?  Where do those come from?
+
+These files are somewhat reverse engineered from the official Cloud Foundry buildpacks CI system on 
+[GitHub](https://github.com/cloudfoundry/buildpacks-ci/tree/develop/tasks/build-binary-new).  I had to take the 
+`php7-base-extensions.yml` file and apply the changes from the `php71-extensions-patch.yml`, `php72-extensions-patch.yml`,
+and `php73-extensions-patch.yml` files in order to create the files, then checked them in here.  Yes that will make them
+another manual update process, but so far I haven't figured out an easy way to automate that.  
