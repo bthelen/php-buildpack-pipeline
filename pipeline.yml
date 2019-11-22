@@ -20,7 +20,7 @@ resources:
 - name: binary-builder-source
   type: git
   source:
-    uri: https://github.com/bthelen/binary-builder.git
+    uri: https://github.com/cloudfoundry/binary-builder.git
     branch: master
 - name: php-buildpack-source
   type: git
