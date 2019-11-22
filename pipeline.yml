@@ -21,7 +21,7 @@ resources:
   type: git
   source:
     uri: https://github.com/bthelen/binary-builder.git
-    branch: PHP73
+    branch: master
 - name: php-buildpack-source
   type: git
   source:
