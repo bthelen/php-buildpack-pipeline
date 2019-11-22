@@ -21,7 +21,7 @@ resources:
   type: git
   source:
     uri: https://github.com/bthelen/binary-builder.git
-    branch: master
+    branch: PHP73
 - name: php-buildpack-source
   type: git
   source:
@@ -31,7 +31,7 @@ resources:
   type: git
   source:
     uri: https://github.com/bthelen/php-buildpack-pipeline.git
-    branch: master
+    branch: PHP73
 - name: oracle-drivers
   type: s3
   source:
