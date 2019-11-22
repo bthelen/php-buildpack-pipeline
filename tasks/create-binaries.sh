@@ -23,9 +23,6 @@ popd
 if [[ $PHP_VERSION = "71" ]]
 then
     export PHP_VERSION_NUMBER=`cat php-71-version/version`
-elif [[ $PHP_VERSION = "72" ]]
-then
-    export PHP_VERSION_NUMBER=`cat php-72-version/version`
 elif [[ $PHP_VERSION = "73" ]]
 then
     export PHP_VERSION_NUMBER=`cat php-73-version/version`

@@ -2,22 +2,18 @@ groups:
 - name: All
   jobs:
   - create-php-71-binaries
-  - create-php-72-binaries
   - create-php-73-binaries
   - create-buildpack-cflinuxfs3
   - bump-php-71-version
-  - bump-php-72-version
   - bump-php-73-version
 - name: Build Pipeline
   jobs:
     - create-php-71-binaries
-    - create-php-72-binaries
     - create-php-73-binaries
     - create-buildpack-cflinuxfs3
 - name: Versions
   jobs:
   - bump-php-71-version
-  - bump-php-72-version
   - bump-php-73-version
 
 resources:
@@ -59,23 +55,6 @@ resources:
     endpoint: ((endpoint))
     bucket: ((s3-bucket-name))
     regexp: php7-7.1.(.*)-linux-x64.tgz
-    access_key_id: ((access-key-id))
-    secret_access_key: ((secret-access-key))
-- name: php-72-version
-  type: semver
-  source:
-    driver: s3
-    key: php-72-version
-    endpoint: ((endpoint))
-    bucket: ((s3-bucket-name))
-    access_key_id: ((access-key-id))
-    secret_access_key: ((secret-access-key))
-- name: php-72-binaries
-  type: s3
-  source:
-    endpoint: ((endpoint))
-    bucket: ((s3-bucket-name))
-    regexp: php7-7.2.(.*)-linux-x64.tgz
     access_key_id: ((access-key-id))
     secret_access_key: ((secret-access-key))
 - name: php-73-version
@@ -127,28 +106,6 @@ jobs:
     - put: php-71-binaries
       params:
         file: php-binaries-built/php7-7.1.*-linux-x64.tgz
-- name: create-php-72-binaries
-  plan:
-    - get: php-pipeline-source
-      trigger: false
-    - get: binary-builder-source
-      trigger: false
-    - get: oracle-drivers
-      trigger: false
-    - get: php-71-version
-      trigger: false
-    - get: php-72-version
-      trigger: true
-    - get: php-73-version
-      trigger: false
-    - task: create-72-binaries
-      file: php-pipeline-source/tasks/create-binaries.yml
-      params:
-        PHP_VERSION: 72
-        EXTENSIONS_FILE: php72-extensions.yml
-    - put: php-72-binaries
-      params:
-        file: php-binaries-built/php7-7.2.*-linux-x64.tgz
 - name: create-php-73-binaries
   plan:
     - get: php-pipeline-source
@@ -200,14 +157,6 @@ jobs:
     - put: php-71-version
       params:
         file: php-71-version/number
-- name: bump-php-72-version
-  plan:
-    - get: php-72-version
-      params:
-        bump: patch
-    - put: php-72-version
-      params:
-        file: php-72-version/number
 - name: bump-php-73-version
   plan:
     - get: php-73-version

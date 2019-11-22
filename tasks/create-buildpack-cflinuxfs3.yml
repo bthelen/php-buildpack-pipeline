@@ -9,7 +9,6 @@ inputs:
 - name: php-pipeline-source
 - name: php-buildpack-source
 - name: php-71-binaries
-- name: php-72-binaries
 - name: php-73-binaries
 
 outputs:
