@@ -163,7 +163,6 @@ The built PHP Binaries and the Buildpack for cflinuxfs3 which includes the Oracl
   ``` 
 - Store that `.tar.gz` file in your S3 bucket.
 - Create a version file named php-71-version for the PHP 7.1.x source you wish to build and store that in your S3 bucket. 
-- Create a version file named php-72-version for the PHP 7.2.x source you wish to build and store that in your S3 bucket.
 - Create a version file named php-73-version for the PHP 7.3.x source you wish to build and store that in your S3 bucket.
 
 ### Add your pipeline to your Concourse 
@@ -197,6 +196,6 @@ automatically, instead run this one manually when you know there are binaries yo
 
 These files are somewhat reverse engineered from the official Cloud Foundry buildpacks CI system on 
 [GitHub](https://github.com/cloudfoundry/buildpacks-ci/tree/develop/tasks/build-binary-new).  I had to take the 
-`php7-base-extensions.yml` file and apply the changes from the `php71-extensions-patch.yml`, `php72-extensions-patch.yml`,
+`php7-base-extensions.yml` file and apply the changes from the `php71-extensions-patch.yml` 
 and `php73-extensions-patch.yml` files in order to create the files, then checked them in here.  Yes that will make them
 another manual update process, but so far I haven't figured out an easy way to automate that.  

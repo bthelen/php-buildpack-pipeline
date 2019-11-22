@@ -94,8 +94,6 @@ jobs:
       trigger: false
     - get: php-71-version
       trigger: true
-    - get: php-72-version
-      trigger: false
     - get: php-73-version
       trigger: false
     - task: create-71-binaries
@@ -116,8 +114,6 @@ jobs:
       trigger: false
     - get: php-71-version
       trigger: false
-    - get: php-72-version
-      trigger: false
     - get: php-73-version
       trigger: true
     - task: create-73-binaries
@@ -136,9 +132,6 @@ jobs:
     - get: php-71-binaries
       trigger: false
       passed: [create-php-71-binaries]
-    - get: php-72-binaries
-      trigger: false
-      passed: [create-php-72-binaries]
     - get: php-73-binaries
       trigger: false
       passed: [create-php-73-binaries]
